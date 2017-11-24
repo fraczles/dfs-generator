@@ -26,3 +26,8 @@ RUN julia -e "Pkg.add(\"GLPK\"); Pkg.build(\"GLPK\")" && \
     julia -e "Pkg.add(\"JuMP\")" && \
     julia -e "Pkg.add(\"DataFrames\")"
 
+RUN mkdir /code
+WORKDIR /code
+ADD optimizer.jl /code/
+
+CMD julia /code/optimizer.jl
